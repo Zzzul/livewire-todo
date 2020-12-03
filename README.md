@@ -29,6 +29,8 @@ $ cp .env.example .env
 $ php artisan key:generate
 # laravel migrate
 $ php artisan migrate
+# start local server
+$ php artisan serve
 ```
 
 ## How does it look?
