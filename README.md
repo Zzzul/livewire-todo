@@ -10,8 +10,9 @@
 ## What inside?
 
 -   Laravel ^8.x - [laravel.com/docs/8.x](https://laravel.com/docs/8.x)
+-   Laravel UI ^3.x - [laravel-ui](https://github.com/laravel/ui/tree/3.x)
 -   Livewire ^2.x - [laravel-livewire.com](https://laravel-livewire.com)
--   Laravel UI ^3.x - [laravel-livewire.com](https://github.com/laravel/ui/tree/3.x)
+
 
 ## What next?
 
