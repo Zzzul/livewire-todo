@@ -2,25 +2,14 @@
     <div class="row justify-content-md-center">
 
         <div class="col-md-6">
-            <h1 class="text-center my-4 font-weight-bold">Livewire simple TODO</h1>
+            {{-- <h1 class="text-center my-4 font-weight-bold">Livewire simple TODO</h1> --}}
 
-            {{-- <img src="{{ asset('storage/img/logo.png') }}" alt="Livewire Logo"
-            class="rounded d-flex justify-content-center img-fluid"> --}}
-
-            @if (session()->has('created'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('created') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            @endif
-
+            {{-- form create --}}
             <form wire:submit.prevent="store">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input wire:model="title" type="text" class="form-control @error('title') is-invalid @enderror"
-                        id="title" placeholder="Learning Livewire">
+                        id="title" placeholder="Learn Livewire">
                     @error('title')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -54,15 +43,14 @@
 
             <h4 class="text-center my-4 font-weight-bold">TODO's List</h4>
 
-            {{-- flash messages --}}
-            @if (session()->has('updated'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('updated') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            @endif
+            {{-- search --}}
+            <form>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input wire:model="search" type="text" class="form-control" placeholder="Search..">
+                    </div>
+                </div>
+            </form>
 
             @forelse ($todos as $todo)
             <form wire:submit.prevent="update('{{ $editId }}')">
@@ -75,7 +63,7 @@
                                 <div class="form-group">
                                     <input wire:model="titleEdit" type="text"
                                         class="form-control float-left mb-0 @error('titleEdit') is-invalid @enderror"
-                                        id="title" placeholder="Learning Livewire">
+                                        id="title" placeholder="Title">
                                     @error('titleEdit')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -109,10 +97,11 @@
                     {{-- end of card-header --}}
                     <div class="card-body">
                         @if ($editId == $todo->id)
+                        {{-- edit form --}}
                         <div class="form-group">
                             <textarea wire:model="descriptionEdit"
                                 class="form-control @error('descriptionEdit') is-invalid @enderror" rows="6"
-                                id="description" placeholder="Make Simple TODO using laravel + livewire"></textarea>
+                                id="description" placeholder="Description"></textarea>
                             @error('descriptionEdit')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -120,7 +109,7 @@
 
                         <div class="form-group">
                             <input wire:model="dueDateEdit" type="date" id="due-date"
-                                class="form-control @error('dueDateEdit') is-invalid @enderror" placeholder="Due Date">
+                                class="form-control @error('dueDateEdit') is-invalid @enderror">
                             @error('dueDateEdit')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -155,7 +144,7 @@
                         </small>
                         @if ($todo->finished_on)
                         <small class="text-secondary float-right">
-                            Finish On : {{ date('d F Y', strtotime($todo->finished_on)) }}
+                            Finished At : {{ date('d F Y', strtotime($todo->finished_on)) }}
                         </small>
                         @endif
                         @endif
@@ -165,9 +154,12 @@
                 </div>
                 {{-- end of card--}}
                 @empty
-                <h4 class="text-center text-secondary">Nothing..</h4>
+                <h4 class="text-center text-secondary">No Tasks..</h4>
                 @endforelse
             </form>
+            <div class="d-flex justify-content-center mt-4 mb-0">
+                {{ $todos->links() }}
+            </div>
         </div>
         {{-- end of col --}}
     </div>

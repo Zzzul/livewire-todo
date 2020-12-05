@@ -4,14 +4,24 @@ namespace App\Http\Livewire;
 
 use App\Models\Todo as ModelsTodo;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Todo extends Component
 {
-    public $title, $description, $dueDate, $editId, $titleEdit, $descriptionEdit, $dueDateEdit, $createdAt, $updatedAt;
+    use WithPagination;
+
+    public $title, $description, $dueDate, $editId, $titleEdit, $descriptionEdit, $dueDateEdit, $createdAt, $updatedAt, $search;
+
+    protected $paginationTheme = 'bootstrap';
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
-        $todos = ModelsTodo::latest()->get();
+        $todos = ModelsTodo::where('title', 'like', '%' . $this->search . '%')->latest()->paginate(4);
         return view('livewire.todo', compact('todos'));
     }
 
@@ -78,7 +88,7 @@ class Todo extends Component
         $todo->finished_on = date('Y-m-d');
         $todo->save();
 
-        $this->showAlert('Yeayy, Congrats Your task is done!');
+        $this->showAlert('Yeayy, Congrats your task is done!');
     }
 
     public function notFinished($id)
@@ -87,7 +97,7 @@ class Todo extends Component
         $todo->finished_on = null;
         $todo->save();
 
-        $this->showAlert('Your task is not finished!');
+        $this->showAlert('Your task is not finish!');
     }
 
     public function emptyItem()
