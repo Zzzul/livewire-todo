@@ -49,7 +49,10 @@
                             <!-- Left Side Of Navbar -->
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
-                                    <a href="todo" class="nav-link">TODO</a>
+                                    <a href="home" class="nav-link">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="todo" class="nav-link">Todo</a>
                                 </li>
                             </ul>
 

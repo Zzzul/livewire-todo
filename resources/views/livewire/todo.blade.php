@@ -35,13 +35,13 @@
 
                 <button class="btn btn-primary btn-block" type="submit">
                     <i class="fas fa-plus mr-1"></i>
-                    Add
+                    Submit
                 </button>
             </form>
 
             <hr class="my-4 shadow-sm">
 
-            <h4 class="text-center my-4 font-weight-bold">TODO's List</h4>
+            <h4 class="text-center my-4 font-weight-bold">Todo List</h4>
 
             {{-- search --}}
             <form>

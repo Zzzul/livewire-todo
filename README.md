@@ -1,9 +1,8 @@
 # Simple TODO Laravel 8 + Livewire 2
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/62506582/101037050-c5dad780-35ad-11eb-8ecb-4719384a075f.png" width="100%" height="auto" />
+    <img src="https://user-images.githubusercontent.com/62506582/101234162-ab107c00-36ef-11eb-84b5-a73bfb1cd893.png" width="100%" height="auto" />
 </p>
-
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Zzzul/livewire-todo/issues)
 
@@ -12,7 +11,6 @@
 -   Laravel ^8.x - [laravel.com/docs/8.x](https://laravel.com/docs/8.x)
 -   Laravel UI ^3.x - [laravel-ui](https://github.com/laravel/ui/tree/3.x)
 -   Livewire ^2.x - [laravel-livewire.com](https://laravel-livewire.com)
-
 
 ## What next?
 
