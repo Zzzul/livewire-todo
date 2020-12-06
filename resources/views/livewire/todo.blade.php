@@ -44,17 +44,36 @@
             <h4 class="text-center my-4 font-weight-bold">Todo List</h4>
 
             {{-- search --}}
-            <form>
+            <form class="mb-4">
                 <div class="form-group row">
-                    <div class="col-md-12">
-                        <input wire:model="search" type="text" class="form-control" placeholder="Search..">
+                    <div class="col-md-9">
+                        <label for="order-by">Order By</label>
+                        <select class="form-control" wire:model="orderBy" id="order-by">
+                            <option value="1">Created At (DESC)</option>
+                            <option value="2">Created At (ASC)</option>
+                            <option value="3">Due Date (DESC)</option>
+                            <option value="4">Due Date (ASC)</option>
+                        </select>
                     </div>
+                    <div class="col-md-3">
+                        <label for="paginate">Paginate</label>
+                        <select class="form-control" wire:model="paginate" id="paginate">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input wire:model="search" type="text" class="form-control" placeholder="Search..">
                 </div>
             </form>
 
+            {{-- edit --}}
             @forelse ($todos as $todo)
             <form wire:submit.prevent="update('{{ $editId }}')">
-                <div class="card mb-3 shadow-sm">
+                <div class="card mb-3 shadow-sm my-card">
                     <div class="card-header bg-white">
                         <div class="row">
                             <div class="col-md-9">
@@ -71,7 +90,7 @@
                                 @else
                                 <h5 class="card-title float-left mb-0"
                                     style="{{ $todo->finished_on ?  "text-decoration : line-through;": 'none' }}">
-                                    {{ ucwords($todo->title) }}</h5>
+                                    {{ $todo->title }}</h5>
                                 @endif
                             </div>
 
@@ -82,6 +101,7 @@
                                     <i wire:click="notFinished('{{ $todo->id }}')"
                                         class="fas fa-backspace text-warning mr-2" style="cursor: pointer"></i>
                                     @else
+                                    {{-- <i class="fas fa-spinner text-primary mr-2" style="cursor: pointer"></i> --}}
                                     <i wire:click="done('{{ $todo->id }}')" class="fas fa-check text-success mr-2"
                                         style="cursor: pointer"></i>
                                     @endif
@@ -137,6 +157,7 @@
 
                         @else
                         <p style="{{ $todo->finished_on ?  "text-decoration : line-through;": 'none' }}">
+                            {{-- {!! nl2br($todo->description) !!} --}}
                             {{ $todo->description }}
                         </p>
                         <small class="text-secondary float-left">
@@ -157,7 +178,10 @@
                 <h4 class="text-center text-secondary">No Tasks..</h4>
                 @endforelse
             </form>
-            <div class="d-flex justify-content-center mt-4 mb-0">
+            <div class="d-flex justify-content-between mt-4 mb-0">
+                <div>
+                    Showing {{ count($todos) }} of {{ count($totalTodo) }} entries
+                </div>
                 {{ $todos->links() }}
             </div>
         </div>

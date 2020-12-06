@@ -12,7 +12,12 @@ class Todo extends Component
 
     public $title, $description, $dueDate, $editId, $titleEdit, $descriptionEdit, $dueDateEdit, $createdAt, $updatedAt, $search;
 
+    public $paginate = 5;
+    public $orderBy = 1;
+
     protected $paginationTheme = 'bootstrap';
+
+    protected $queryString = ['search'];
 
     public function updatingSearch()
     {
@@ -21,8 +26,23 @@ class Todo extends Component
 
     public function render()
     {
-        $todos = ModelsTodo::where('title', 'like', '%' . $this->search . '%')->latest()->paginate(4);
-        return view('livewire.todo', compact('todos'));
+        if ($this->orderBy == 1) {
+            $coloumn = 'created_at';
+            $type = 'desc';
+        } elseif ($this->orderBy == 2) {
+            $coloumn = 'created_at';
+            $type = 'asc';
+        } elseif ($this->orderBy == 3) {
+            $coloumn = 'due_date';
+            $type = 'desc';
+        } else {
+            $coloumn = 'due_date';
+            $type = 'asc';
+        }
+
+        $todos = ModelsTodo::where('title', 'like', '%' . $this->search . '%')->orWhere('description', 'like', '%' . $this->search . '%')->orderBy($coloumn, $type)->paginate($this->paginate);
+        $totalTodo = ModelsTodo::get();
+        return view('livewire.todo', compact('todos', 'totalTodo'));
     }
 
     public function store()

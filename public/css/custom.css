@@ -1,0 +1,38 @@
+.my-card {
+    border-radius: 5px !important;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.my-card:hover,
+.my-card:focus,
+.my-card:active {
+    -webkit-transform: translateY(4px) !important;
+    transform: translateY(3px) !important;
+    box-shadow: 0px 2px 2px 2px#D5D5D5 !important;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+    background-color: #fafdfb;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #eee;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background-color: #227dc7;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background-color: #227dc7;
+    border-radius: 3px;
+}
