@@ -59,7 +59,7 @@ class Todo extends Component
             'due_date' => $this->dueDate,
         ]);
 
-        $this->showAlert('TODO Created Successfully!');
+        $this->showAlert('Task Created Successfully!');
 
         $this->emptyItem();
     }
@@ -91,7 +91,7 @@ class Todo extends Component
         $todo->due_date = $this->dueDateEdit;
         $todo->save();
 
-        $this->showAlert('TODO Updated Successfully!');
+        $this->showAlert('Task Updated Successfully!');
 
         $this->emptyEdit();
     }
@@ -99,7 +99,7 @@ class Todo extends Component
     public function destroy($id)
     {
         ModelsTodo::destroy($id);
-        $this->showAlert('TODO Deleted Successfully!');
+        $this->showAlert('Task Deleted Successfully!');
     }
 
     public function done($id)
