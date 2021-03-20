@@ -2,8 +2,6 @@
     <div class="row justify-content-md-center">
 
         <div class="col-md-6">
-            {{-- <h1 class="text-center my-4 font-weight-bold">Livewire simple TODO</h1> --}}
-
             {{-- form create --}}
             <form wire:submit.prevent="store">
                 <div class="form-group">

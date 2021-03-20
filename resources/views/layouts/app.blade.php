@@ -103,9 +103,9 @@
             <div class="row justify-content-md-center">
                 <div class="col-md-6">
                     <hr class="shadow-sm">
-                    <p class="text-center">Created by <a href="https://github.com/zzzul/" class="text-dark">Mohammad
-                            Zulfahmi</a>. Made
-                        with <i class="fas fa-heart-broken text-danger"></i></p>
+                    <p class="text-center">Made with <i class="fas fa-heart text-danger"></i> by
+                        <a href="https://github.com/zzzul/">Mohammad Zulfahmi</a>.
+                    </p>
                 </div>
             </div>
             {{-- end of row --}}
