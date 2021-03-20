@@ -1,7 +1,7 @@
 # Simple TODO Laravel 8 + Livewire 2
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/62506582/101281780-bd7bda00-3803-11eb-9d37-6a5bc620aec2.png" width="100%" height="auto" />
+    <img src="https://user-images.githubusercontent.com/62506582/111863370-c09f6e00-898d-11eb-9d6c-39e188ba4371.png" width="100%" height="auto" />
 </p>
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Zzzul/livewire-todo/issues)
